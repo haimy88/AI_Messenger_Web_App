@@ -1,4 +1,5 @@
-.submit-button {
+/* App.css */
+.submitButton {
   width: 100%;
   padding: 12px;
   border-radius: 40px;
@@ -6,20 +7,15 @@
   color: white;
   font-size: 16px;
   font-weight: bold;
-  cursor: not-allowed;
-  background-color: #A4A8D1;
-  transition: background-color 0.3s ease;
-}
-
-.active-button {
-  background-color: #3949AB;
   cursor: pointer;
+  margin-bottom: 20px;
+  background-color: #a4a8d1; /* Default disabled color */
 }
 
-.active-button:hover {
-  background-color: #27368F;
+.submitButton.enabled {
+  background-color: #3949ab; /* Enabled default color */
 }
 
-.disabled-button {
-  cursor: not-allowed;
+.submitButton.enabled:hover {
+  background-color: #27368f; /* Hover color when enabled */
 }

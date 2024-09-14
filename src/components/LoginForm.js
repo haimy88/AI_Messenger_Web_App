@@ -1,38 +1,36 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext, useState } from "react";
 import FormInput from "./FormInput";
 import Divider from "./Divider";
 import SocialButton from "./SocialButton";
 import RegisterButton from "./RegisterButton";
-import "../App.css"; // Ensure to import your CSS
+import AuthContext from "../contexts/AuthContext";
 
 const LoginForm = () => {
+  const { login, loading, error } = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [isFormValid, setIsFormValid] = useState(false);
 
-  useEffect(() => {
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    setIsFormValid(emailPattern.test(email) && password.length > 0);
-  }, [email, password]);
-
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (isFormValid) {
+      login(email, password);
+    }
   };
 
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  };
+  const isValidEmail = email.includes("@");
+  const isFormValid = isValidEmail && password.length > 0;
 
   return (
     <div style={styles.loginForm}>
       <h2 style={styles.formHeading}>Log in</h2>
-      <form>
+      {error && <div style={styles.error}>{error}</div>}
+      <form onSubmit={handleSubmit}>
         <FormInput
           type="email"
           placeholder="Email"
           iconPath="EmailIcon.png"
           value={email}
-          onChange={handleEmailChange}
+          onChange={(e) => setEmail(e.target.value)}
         />
         <FormInput
           type="password"
@@ -40,7 +38,7 @@ const LoginForm = () => {
           iconPath="LockIcon.png"
           isPassword={true}
           value={password}
-          onChange={handlePasswordChange}
+          onChange={(e) => setPassword(e.target.value)}
         />
         <div style={styles.forgotPassword}>
           <a href="/forgot-password" style={styles.forgotPasswordLink}>
@@ -49,14 +47,10 @@ const LoginForm = () => {
         </div>
         <button
           type="submit"
-          className={
-            isFormValid
-              ? "submit-button active-button"
-              : "submit-button disabled-button"
-          }
-          disabled={!isFormValid}
+          className={`submitButton ${isFormValid && !loading ? "enabled" : ""}`}
+          disabled={!isFormValid || loading}
         >
-          Log in
+          {loading ? "Logging in..." : "Log in"}
         </button>
         <div style={styles.dividerContainer}>
           <Divider />
