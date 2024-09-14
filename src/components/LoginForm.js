@@ -17,7 +17,9 @@ const LoginForm = () => {
           isPassword={true}
         />
         <div style={styles.forgotPassword}>
-          <a href="/forgot-password">Forgot password?</a>
+          <a href="/forgot-password" style={styles.forgotPasswordLink}>
+            Forgot password?
+          </a>
         </div>
         <button type="submit" style={styles.submitButton}>
           Log in
@@ -51,7 +53,11 @@ const styles = {
   },
   forgotPassword: {
     textAlign: "right",
-    marginBottom: "20px",
+    marginBottom: "30px",
+  },
+  forgotPasswordLink: {
+    textDecoration: "none", // Removes underline
+    color: "#3949AB", // Optional: Add color for link
   },
   submitButton: {
     width: "100%",
