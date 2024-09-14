@@ -13,6 +13,7 @@ const LoginForm = () => {
           type="password"
           placeholder="Password"
           iconPath="LockIcon.png"
+          isPassword={true}
         />
         <div style={styles.forgotPassword}>
           <a href="/forgot-password">Forgot password?</a>
@@ -35,7 +36,7 @@ const LoginForm = () => {
 
 const styles = {
   loginForm: {
-    maxWidth: "300px",
+    maxWidth: "358px",
     width: "100%",
   },
   formHeading: {

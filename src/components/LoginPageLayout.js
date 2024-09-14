@@ -23,7 +23,7 @@ const LoginPageLayout = () => {
 
 const styles = {
   container: {
-    backgroundColor: "#4b3af5",
+    backgroundColor: "#5769D4",
     height: "100vh",
     display: "flex",
     justifyContent: "center",
@@ -31,14 +31,14 @@ const styles = {
   },
   loginPage: {
     display: "flex",
-    width: "80vw",
+    width: "85vw",
     height: "80vh",
     backgroundColor: "#ffffff",
     borderRadius: "20px",
     boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.1)",
   },
   welcomePanel: {
-    flex: 1,
+    flex: 3,
     color: "white",
     backgroundColor: "#3949AB", // Darker color for welcome panel
     display: "flex",
@@ -56,8 +56,8 @@ const styles = {
     height: "49px",
   },
   image: {
-    maxWidth: "80%",
-    marginBottom: "20px",
+    width: "357px",
+    height: "357px",
   },
   heading: {
     fontSize: "2rem",
@@ -68,7 +68,7 @@ const styles = {
     textAlign: "center",
   },
   loginPanel: {
-    flex: 1,
+    flex: 2,
     backgroundColor: "white",
     display: "flex",
     flexDirection: "column",
@@ -76,6 +76,7 @@ const styles = {
     alignItems: "center",
     padding: "40px",
     borderRadius: "0 20px 20px 0",
+    width: "486px",
   },
 };
 
