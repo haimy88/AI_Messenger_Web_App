@@ -1,18 +1,12 @@
 import React from "react";
 import LoginForm from "./LoginForm";
-import illustration from "../assets/Illustration.png";
-import logo from "../assets/LogoWhite.png"; // Assuming the logo is added to assets folder
+import WelcomePanel from "./WelcomePanel"; // Importing the new component
 
 const LoginPageLayout = () => {
   return (
     <div style={styles.container}>
       <div style={styles.loginPage}>
-        <div style={styles.welcomePanel}>
-          <img src={logo} alt="Logo" style={styles.logo} />
-          <img src={illustration} alt="Welcome" style={styles.image} />
-          <h1 style={styles.heading}>Welcome aboard my friend</h1>
-          <p style={styles.subheading}>just a couple of clicks and we start</p>
-        </div>
+        <WelcomePanel />
         <div style={styles.loginPanel}>
           <LoginForm />
         </div>
@@ -36,37 +30,6 @@ const styles = {
     backgroundColor: "#ffffff",
     borderRadius: "20px",
     boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.1)",
-  },
-  welcomePanel: {
-    flex: 3,
-    color: "white",
-    backgroundColor: "#3949AB", // Darker color for welcome panel
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    borderRadius: "20px 0 0 20px",
-    position: "relative",
-  },
-  logo: {
-    position: "absolute",
-    top: "50px",
-    left: "50px",
-    width: "49px",
-    height: "49px",
-  },
-  image: {
-    width: "357px",
-    height: "357px",
-  },
-  heading: {
-    fontSize: "24px",
-    marginBottom: "16px",
-    marginTop: "-18px",
-  },
-  subheading: {
-    fontSize: "14px",
-    textAlign: "center",
   },
   loginPanel: {
     flex: 2,
