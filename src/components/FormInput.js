@@ -1,6 +1,13 @@
 import React, { useState } from "react";
 
-const FormInput = ({ type, placeholder, iconPath, isPassword }) => {
+const FormInput = ({
+  type,
+  placeholder,
+  iconPath,
+  isPassword,
+  value,
+  onChange,
+}) => {
   const [showPassword, setShowPassword] = useState(false);
 
   const togglePasswordVisibility = () => {
@@ -13,11 +20,13 @@ const FormInput = ({ type, placeholder, iconPath, isPassword }) => {
       <input
         type={isPassword && !showPassword ? "password" : "text"}
         placeholder={placeholder}
+        value={value}
+        onChange={onChange}
         style={styles.input}
       />
       {isPassword && (
         <img
-          src={require("../assets/ViewIcon.png")} // Assuming ViewIcon.png is the eye icon in your assets
+          src={require("../assets/ViewIcon.png")}
           alt="Toggle password visibility"
           style={styles.viewIcon}
           onClick={togglePasswordVisibility}

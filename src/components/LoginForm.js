@@ -1,27 +1,61 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import FormInput from "./FormInput";
 import Divider from "./Divider";
 import SocialButton from "./SocialButton";
 import RegisterButton from "./RegisterButton";
+import "../App.css"; // Ensure to import your CSS
 
 const LoginForm = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [isFormValid, setIsFormValid] = useState(false);
+
+  useEffect(() => {
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    setIsFormValid(emailPattern.test(email) && password.length > 0);
+  }, [email, password]);
+
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+  };
+
   return (
     <div style={styles.loginForm}>
       <h2 style={styles.formHeading}>Log in</h2>
       <form>
-        <FormInput type="email" placeholder="Email" iconPath="EmailIcon.png" />
+        <FormInput
+          type="email"
+          placeholder="Email"
+          iconPath="EmailIcon.png"
+          value={email}
+          onChange={handleEmailChange}
+        />
         <FormInput
           type="password"
           placeholder="Password"
           iconPath="LockIcon.png"
           isPassword={true}
+          value={password}
+          onChange={handlePasswordChange}
         />
         <div style={styles.forgotPassword}>
           <a href="/forgot-password" style={styles.forgotPasswordLink}>
             Forgot password?
           </a>
         </div>
-        <button type="submit" style={styles.submitButton}>
+        <button
+          type="submit"
+          className={
+            isFormValid
+              ? "submit-button active-button"
+              : "submit-button disabled-button"
+          }
+          disabled={!isFormValid}
+        >
           Log in
         </button>
         <div style={styles.dividerContainer}>
@@ -56,19 +90,8 @@ const styles = {
     marginBottom: "30px",
   },
   forgotPasswordLink: {
-    textDecoration: "none", // Removes underline
-    color: "#3949AB", // Optional: Add color for link
-  },
-  submitButton: {
-    width: "100%",
-    padding: "12px",
-    backgroundColor: "#A4A8D1",
-    borderRadius: "40px",
-    border: "none",
-    color: "white",
-    fontSize: "16px",
-    fontWeight: "bold",
-    cursor: "pointer",
+    textDecoration: "none",
+    color: "#3949AB",
   },
   dividerContainer: {
     display: "flex",

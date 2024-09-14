@@ -16,3 +16,8 @@ h1 {
 p {
   margin: 0;
 }
+
+.active-button:hover {
+  background-color: #27368f;
+  cursor: pointer;
+}
