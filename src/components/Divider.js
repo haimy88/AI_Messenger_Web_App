@@ -15,6 +15,7 @@ const styles = {
     display: "flex",
     alignItems: "center",
     margin: "20px 0",
+    width: "215px",
   },
   line: {
     flex: 1,

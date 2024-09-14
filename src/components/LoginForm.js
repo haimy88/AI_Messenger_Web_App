@@ -22,7 +22,9 @@ const LoginForm = () => {
         <button type="submit" style={styles.submitButton}>
           Log in
         </button>
-        <Divider />
+        <div style={styles.dividerContainer}>
+          <Divider />
+        </div>
         <div style={styles.socialButtons}>
           <SocialButton iconPath="GoogleIcon.png" buttonText="Google" />
           <SocialButton iconPath="FacebookIcon.png" buttonText="Facebook" />
@@ -42,9 +44,10 @@ const styles = {
     width: "75%",
   },
   formHeading: {
-    marginBottom: "20px",
-    fontSize: "24px",
+    marginBottom: "50px",
+    fontSize: "20px",
     textAlign: "center",
+    color: "#3949AB",
   },
   forgotPassword: {
     textAlign: "right",
@@ -61,10 +64,14 @@ const styles = {
     fontWeight: "bold",
     cursor: "pointer",
   },
+  dividerContainer: {
+    display: "flex",
+    justifyContent: "center",
+    margin: "0",
+  },
   socialButtons: {
     display: "flex",
     justifyContent: "space-between",
-    marginTop: "20px",
   },
   registerSection: {
     marginTop: "20px",

@@ -11,7 +11,7 @@ const LoginPageLayout = () => {
           <img src={logo} alt="Logo" style={styles.logo} />
           <img src={illustration} alt="Welcome" style={styles.image} />
           <h1 style={styles.heading}>Welcome aboard my friend</h1>
-          <p style={styles.subheading}>Just a couple of clicks and we start</p>
+          <p style={styles.subheading}>just a couple of clicks and we start</p>
         </div>
         <div style={styles.loginPanel}>
           <LoginForm />
@@ -50,8 +50,8 @@ const styles = {
   },
   logo: {
     position: "absolute",
-    top: "20px",
-    left: "20px",
+    top: "50px",
+    left: "50px",
     width: "49px",
     height: "49px",
   },
@@ -60,11 +60,12 @@ const styles = {
     height: "357px",
   },
   heading: {
-    fontSize: "2rem",
-    marginBottom: "10px",
+    fontSize: "24px",
+    marginBottom: "16px",
+    marginTop: "-18px",
   },
   subheading: {
-    fontSize: "1.2rem",
+    fontSize: "14px",
     textAlign: "center",
   },
   loginPanel: {
