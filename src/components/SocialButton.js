@@ -1,9 +1,9 @@
 import React from "react";
 
-const SocialButton = ({ icon, buttonText }) => {
+const SocialButton = ({ iconPath, buttonText }) => {
   return (
     <button style={styles.socialButton}>
-      <img src={icon} alt="" style={styles.icon} />
+      <img src={require(`../assets/${iconPath}`)} alt="" style={styles.icon} />
       <span style={styles.text}>{buttonText}</span>
     </button>
   );
