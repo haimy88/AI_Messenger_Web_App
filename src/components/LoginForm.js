@@ -2,6 +2,7 @@ import React from "react";
 import FormInput from "./FormInput";
 import Divider from "./Divider";
 import SocialButton from "./SocialButton";
+import RegisterButton from "./RegisterButton";
 
 const LoginForm = () => {
   return (
@@ -27,8 +28,9 @@ const LoginForm = () => {
           <SocialButton iconPath="FacebookIcon.png" buttonText="Facebook" />
         </div>
       </form>
-      <div style={styles.registerLink}>
-        <span>Have no account yet?</span> <a href="/register">Register</a>
+      <div style={styles.registerSection}>
+        <span>Have no account yet?</span>
+        <RegisterButton />
       </div>
     </div>
   );
@@ -37,7 +39,7 @@ const LoginForm = () => {
 const styles = {
   loginForm: {
     maxWidth: "358px",
-    width: "100%",
+    width: "75%",
   },
   formHeading: {
     marginBottom: "20px",
@@ -64,7 +66,7 @@ const styles = {
     justifyContent: "space-between",
     marginTop: "20px",
   },
-  registerLink: {
+  registerSection: {
     marginTop: "20px",
     textAlign: "center",
   },

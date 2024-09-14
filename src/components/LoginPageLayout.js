@@ -31,8 +31,8 @@ const styles = {
   },
   loginPage: {
     display: "flex",
-    width: "85vw",
-    height: "80vh",
+    width: "90vw",
+    height: "90vh",
     backgroundColor: "#ffffff",
     borderRadius: "20px",
     boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.1)",

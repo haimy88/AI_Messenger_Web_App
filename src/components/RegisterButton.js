@@ -15,6 +15,7 @@ const styles = {
     fontWeight: "bold",
     fontSize: "16px",
     cursor: "pointer",
+    marginTop: "14px",
   },
 };
 
