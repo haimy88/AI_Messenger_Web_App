@@ -8,6 +8,7 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [toastMessage, setToastMessage] = useState("");
 
   const login = async (email, password) => {
     setLoading(true);
@@ -20,10 +21,17 @@ export const AuthProvider = ({ children }) => {
           password: password,
         }
       );
-      console.log(response);
+
+      console.log("User registered:", response.data);
       setUser({ email });
+
+      const toastResponse = await axios.post("http://localhost:8000/toast", {
+        username: email,
+      });
+
+      setToastMessage(toastResponse.data.message);
     } catch (err) {
-      setError("Failed to log in");
+      setError("Failed to register");
     } finally {
       setLoading(false);
     }
@@ -31,10 +39,13 @@ export const AuthProvider = ({ children }) => {
 
   const logout = () => {
     setUser(null);
+    setToastMessage(""); // Reset the toast message when the user logs out
   };
 
   return (
-    <AuthContext.Provider value={{ user, loading, error, login, logout }}>
+    <AuthContext.Provider
+      value={{ user, loading, error, login, logout, toastMessage }}
+    >
       {children}
     </AuthContext.Provider>
   );
