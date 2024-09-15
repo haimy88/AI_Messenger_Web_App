@@ -1,6 +1,6 @@
-// src/context/AuthContext.js
 import React, { createContext, useState } from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const AuthContext = createContext();
 
@@ -8,7 +8,6 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [toastMessage, setToastMessage] = useState("");
 
   const login = async (email, password) => {
     setLoading(true);
@@ -22,16 +21,17 @@ export const AuthProvider = ({ children }) => {
         }
       );
 
-      console.log("User registered:", response.data);
       setUser({ email });
 
       const toastResponse = await axios.post("http://localhost:8000/toast", {
         username: email,
       });
 
-      setToastMessage(toastResponse.data.message);
+      // Show the toast message directly after the successful request
+      toast.success(toastResponse.data.toast);
     } catch (err) {
       setError("Failed to register");
+      toast.error("Failed to register");
     } finally {
       setLoading(false);
     }
@@ -39,13 +39,10 @@ export const AuthProvider = ({ children }) => {
 
   const logout = () => {
     setUser(null);
-    setToastMessage(""); // Reset the toast message when the user logs out
   };
 
   return (
-    <AuthContext.Provider
-      value={{ user, loading, error, login, logout, toastMessage }}
-    >
+    <AuthContext.Provider value={{ user, loading, error, login, logout }}>
       {children}
     </AuthContext.Provider>
   );

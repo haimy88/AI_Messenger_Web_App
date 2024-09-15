@@ -2,6 +2,8 @@ import React, { useContext, useState } from "react";
 import InputStack from "./InputStack";
 import ButtonStack from "./ButtonStack";
 import AuthContext from "../contexts/AuthContext";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const LoginForm = () => {
   const { login, loading, error } = useContext(AuthContext);
@@ -35,6 +37,7 @@ const LoginForm = () => {
           handleSubmit={handleSubmit}
         />
       </form>
+      <ToastContainer />
     </div>
   );
 };
@@ -49,6 +52,11 @@ const styles = {
     fontSize: "20px",
     textAlign: "center",
     color: "#3949AB",
+  },
+  error: {
+    color: "red",
+    textAlign: "center",
+    marginBottom: "10px",
   },
 };
 
