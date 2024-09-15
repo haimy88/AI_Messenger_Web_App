@@ -1,8 +1,6 @@
 import React, { useContext, useState } from "react";
-import FormInput from "./FormInput";
-import Divider from "./Divider";
-import SocialButton from "./SocialButton";
-import RegisterButton from "./RegisterButton";
+import InputStack from "./InputStack";
+import ButtonStack from "./ButtonStack";
 import AuthContext from "../contexts/AuthContext";
 
 const LoginForm = () => {
@@ -25,45 +23,18 @@ const LoginForm = () => {
       <h2 style={styles.formHeading}>Log in</h2>
       {error && <div style={styles.error}>{error}</div>}
       <form onSubmit={handleSubmit}>
-        <FormInput
-          type="email"
-          placeholder="Email"
-          iconPath="EmailIcon.png"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+        <InputStack
+          email={email}
+          setEmail={setEmail}
+          password={password}
+          setPassword={setPassword}
         />
-        <FormInput
-          type="password"
-          placeholder="Password"
-          iconPath="LockIcon.png"
-          isPassword={true}
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+        <ButtonStack
+          isFormValid={isFormValid}
+          loading={loading}
+          handleSubmit={handleSubmit}
         />
-        <div style={styles.forgotPassword}>
-          <a href="/forgot-password" style={styles.forgotPasswordLink}>
-            Forgot password?
-          </a>
-        </div>
-        <button
-          type="submit"
-          className={`submitButton ${isFormValid && !loading ? "enabled" : ""}`}
-          disabled={!isFormValid || loading}
-        >
-          {loading ? "Logging in..." : "Log in"}
-        </button>
-        <div style={styles.dividerContainer}>
-          <Divider />
-        </div>
-        <div style={styles.socialButtons}>
-          <SocialButton iconPath="GoogleIcon.png" buttonText="Google" />
-          <SocialButton iconPath="FacebookIcon.png" buttonText="Facebook" />
-        </div>
       </form>
-      <div style={styles.registerSection}>
-        <span>Have no account yet?</span>
-        <RegisterButton />
-      </div>
     </div>
   );
 };
@@ -78,27 +49,6 @@ const styles = {
     fontSize: "20px",
     textAlign: "center",
     color: "#3949AB",
-  },
-  forgotPassword: {
-    textAlign: "right",
-    marginBottom: "30px",
-  },
-  forgotPasswordLink: {
-    textDecoration: "none",
-    color: "#3949AB",
-  },
-  dividerContainer: {
-    display: "flex",
-    justifyContent: "center",
-    margin: "0",
-  },
-  socialButtons: {
-    display: "flex",
-    justifyContent: "space-between",
-  },
-  registerSection: {
-    marginTop: "20px",
-    textAlign: "center",
   },
 };
 
