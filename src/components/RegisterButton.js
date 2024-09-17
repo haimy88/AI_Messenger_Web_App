@@ -1,7 +1,15 @@
 import React from "react";
 
-const RegisterButton = () => {
-  return <button style={styles.registerButton}>Register</button>;
+const RegisterButton = ({ isFormValid, loading, handleRegister }) => {
+  return (
+    <button
+      style={styles.registerButton}
+      disabled={!isFormValid || loading}
+      onClick={handleRegister}
+    >
+      {loading ? "Registering..." : "Register"}
+    </button>
+  );
 };
 
 const styles = {

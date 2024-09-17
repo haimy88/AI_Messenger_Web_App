@@ -30,7 +30,6 @@ export const AuthProvider = ({ children }) => {
       // Show the toast message directly after the successful request
       toast.success(toastResponse.data.toast);
     } catch (err) {
-      setError("Failed to register");
       toast.error("Failed to register");
     } finally {
       setLoading(false);

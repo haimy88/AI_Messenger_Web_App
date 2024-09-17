@@ -3,16 +3,15 @@ import Divider from "./Divider";
 import SocialButton from "./SocialButton";
 import RegisterButton from "./RegisterButton";
 
-const ButtonStack = ({ isFormValid, loading, handleSubmit }) => {
+const ButtonStack = ({ isFormValid, loading, handleRegister }) => {
   return (
     <div style={styles.buttonStack}>
       <button
         type="submit"
-        className={`submitButton ${isFormValid && !loading ? "enabled" : ""}`}
-        disabled={!isFormValid || loading}
-        onClick={handleSubmit}
+        className={`submitButton ${isFormValid ? "enabled" : ""}`}
+        disabled={!isFormValid}
       >
-        {loading ? "Logging in..." : "Log in"}
+        Log in
       </button>
       <div style={styles.dividerContainer}>
         <Divider />
@@ -23,7 +22,11 @@ const ButtonStack = ({ isFormValid, loading, handleSubmit }) => {
       </div>
       <div style={styles.registerSection}>
         <span>Have no account yet?</span>
-        <RegisterButton />
+        <RegisterButton
+          isFormValid={isFormValid}
+          loading={loading}
+          handleRegister={handleRegister}
+        />
       </div>
     </div>
   );

@@ -10,7 +10,7 @@ const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleRegister = (e) => {
     e.preventDefault();
     if (isFormValid) {
       login(email, password);
@@ -24,7 +24,7 @@ const LoginForm = () => {
     <div style={styles.loginForm}>
       <h2 style={styles.formHeading}>Log in</h2>
       {error && <div style={styles.error}>{error}</div>}
-      <form onSubmit={handleSubmit}>
+      <form>
         <InputStack
           email={email}
           setEmail={setEmail}
@@ -34,7 +34,7 @@ const LoginForm = () => {
         <ButtonStack
           isFormValid={isFormValid}
           loading={loading}
-          handleSubmit={handleSubmit}
+          handleRegister={handleRegister}
         />
       </form>
       <ToastContainer />
