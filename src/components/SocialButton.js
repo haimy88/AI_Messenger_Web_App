@@ -1,8 +1,12 @@
 import React from "react";
 
 const SocialButton = ({ iconPath, buttonText }) => {
+  const handleClick = (event) => {
+    event.preventDefault();
+  };
+
   return (
-    <button style={styles.socialButton}>
+    <button style={styles.socialButton} onClick={handleClick}>
       <img src={require(`../assets/${iconPath}`)} alt="" style={styles.icon} />
       <span style={styles.text}>{buttonText}</span>
     </button>

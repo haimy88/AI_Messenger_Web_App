@@ -2,17 +2,12 @@ import React from "react";
 import Divider from "./Divider";
 import SocialButton from "./SocialButton";
 import RegisterButton from "./RegisterButton";
+import LoginButton from "./LoginButton"; // Import the new LoginButton component
 
 const ButtonStack = ({ isFormValid, loading, handleRegister }) => {
   return (
     <div style={styles.buttonStack}>
-      <button
-        type="submit"
-        className={`submitButton ${isFormValid ? "enabled" : ""}`}
-        disabled={!isFormValid}
-      >
-        Log in
-      </button>
+      <LoginButton isFormValid={isFormValid} />
       <div style={styles.dividerContainer}>
         <Divider />
       </div>
