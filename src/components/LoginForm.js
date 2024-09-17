@@ -46,6 +46,7 @@ const styles = {
   loginForm: {
     maxWidth: "358px",
     width: "85%",
+    marginBottom: "5vh",
   },
   formHeading: {
     marginBottom: "50px",
