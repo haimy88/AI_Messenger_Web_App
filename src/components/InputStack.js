@@ -1,5 +1,6 @@
 import React from "react";
 import FormInput from "./FormInput";
+import ForgotPassword from "./ForgotPassword";
 
 const InputStack = ({ email, setEmail, password, setPassword }) => {
   return (
@@ -19,6 +20,7 @@ const InputStack = ({ email, setEmail, password, setPassword }) => {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
+      <ForgotPassword />
     </div>
   );
 };

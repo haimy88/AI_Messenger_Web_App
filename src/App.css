@@ -19,3 +19,95 @@
   background-color: #27368f; /* Hover color when enabled */
 }
 
+.social-button {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 40px;
+  padding: 10px 20px;
+  flex: 1;
+  justify-content: center;
+  background: none;
+  cursor: pointer;
+  margin: 0 5px;
+  width: 100%;
+  transition: background 0.3s ease;
+}
+
+.social-button:hover {
+  background: #F0F0F0;
+}
+
+.social-button-icon {
+  margin-right: 10px;
+  width: 24px;
+  height: 24px;
+}
+
+.social-button-text {
+  font-size: 16px;
+  color: #333;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.form-input-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 10px;
+  transition: box-shadow 0.3s ease, border 0.3s ease;
+}
+
+.form-input-container:focus-within {
+  border: 1px solid #5769D4;
+  box-shadow: 0 0 3px rgba(87, 105, 212, 0.3);
+  border-radius: 8px;
+}
+
+.form-input-icon {
+  margin-right: 10px;
+  width: 24px;
+  height: 24px;
+}
+
+.form-input-field {
+  flex: 1;
+  border: none;
+  outline: none;
+}
+
+.form-input-view-icon {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.input-stack-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.forgot-password-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.forgot-password-link {
+  color: #5769D4;
+  text-decoration: none;
+  font-size: 14px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.forgot-password-link:hover {
+  color: #3949AB;
+}

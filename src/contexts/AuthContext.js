@@ -1,6 +1,6 @@
 import React, { createContext, useState } from "react";
-import axios from "axios";
 import { toast } from "react-toastify";
+import authService from "../services/authService";
 
 const AuthContext = createContext();
 
@@ -9,28 +9,17 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const login = async (email, password) => {
+  const register = async (email, password) => {
     setLoading(true);
     setError(null);
     try {
-      const response = await axios.post(
-        "https://registrationserver.azurewebsites.net/register",
-        {
-          username: email,
-          password: password,
-        }
-      );
-
+      await authService.register(email, password);
       setUser({ email });
 
-      const toastResponse = await axios.post("http://localhost:8000/toast", {
-        username: email,
-      });
-
-      // Show the toast message directly after the successful request
-      toast.success(toastResponse.data.toast);
+      const toastMessage = await authService.triggerToast(email);
+      toast.success(toastMessage);
     } catch (err) {
-      toast.error("Failed to register");
+      toast.error(err);
     } finally {
       setLoading(false);
     }
@@ -41,7 +30,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, loading, error, login, logout }}>
+    <AuthContext.Provider value={{ user, loading, error, register, logout }}>
       {children}
     </AuthContext.Provider>
   );

@@ -6,14 +6,14 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const LoginForm = () => {
-  const { login, loading, error } = useContext(AuthContext);
+  const { register, loading, error } = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleRegister = (e) => {
     e.preventDefault();
     if (isFormValid) {
-      login(email, password);
+      register(email, password);
     }
   };
 
@@ -45,7 +45,7 @@ const LoginForm = () => {
 const styles = {
   loginForm: {
     maxWidth: "358px",
-    width: "75%",
+    width: "85%",
   },
   formHeading: {
     marginBottom: "50px",
